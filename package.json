@@ -1,0 +1,45 @@
+{
+  "name": "idk-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared design system and UI component library for the idk app ecosystem.",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./theme.css": "./src/styles/theme.css",
+    "./motion.css": "./src/styles/motion.css"
+  },
+  "files": [
+    "dist",
+    "src/styles/theme.css",
+    "src/styles/motion.css"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-slot": "^1.2.3",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.2",
+    "postcss": "^8.5.3",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  }
+}

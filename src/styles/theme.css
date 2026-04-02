@@ -1,0 +1,42 @@
+:root {
+  --background: #f5f7fb;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
+  --input: #d1d5db;
+  --primary: #111111;
+  --primary-foreground: #ffffff;
+  --success: #059669;
+  --success-foreground: #ffffff;
+  --info: #0284c7;
+  --info-foreground: #ffffff;
+  --danger: #dc2626;
+  --danger-foreground: #ffffff;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 1.75rem;
+  --radius-control: 1rem;
+  --radius-button: 1rem;
+  --radius-panel: 1.75rem;
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --shadow-card: 0 8px 24px rgba(15, 23, 42, 0.05);
+  --shadow-overlay: 0 24px 80px rgba(15, 23, 42, 0.18);
+  --font-ui: var(--font-geist-sans), "Inter", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-ui);
+}
