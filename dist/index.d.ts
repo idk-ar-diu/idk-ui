@@ -1,7 +1,7 @@
 import * as react from 'react';
-import { ButtonHTMLAttributes, ReactNode, InputHTMLAttributes, TextareaHTMLAttributes, SelectHTMLAttributes, ComponentPropsWithoutRef, HTMLAttributes, PropsWithChildren, ComponentProps } from 'react';
-import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { ButtonHTMLAttributes, ReactNode, HTMLAttributes, InputHTMLAttributes, TextareaHTMLAttributes, SelectHTMLAttributes, ComponentPropsWithoutRef, PropsWithChildren, ComponentProps, DragEvent, DragEventHandler } from 'react';
 import * as react_jsx_runtime from 'react/jsx-runtime';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { ClassValue } from 'clsx';
 export { Slot } from '@radix-ui/react-slot';
 
@@ -24,6 +24,22 @@ declare const Button: react.ForwardRefExoticComponent<react.ButtonHTMLAttributes
     leftIcon?: react.ReactNode;
     rightIcon?: react.ReactNode;
 } & react.RefAttributes<HTMLButtonElement>>;
+
+type MetricPillTone = "neutral" | "success" | "danger";
+type MetricPillProps = HTMLAttributes<HTMLSpanElement> & {
+    children: ReactNode;
+    tone?: MetricPillTone;
+};
+declare function MetricPill({ children, tone, className, ...props }: MetricPillProps): react_jsx_runtime.JSX.Element;
+
+type ModalShellProps = {
+    open: boolean;
+    title: string;
+    children: ReactNode;
+    onClose: () => void;
+    size?: "sm" | "md" | "lg" | "xl";
+};
+declare function ModalShell({ open, title, children, onClose, size }: ModalShellProps): react_jsx_runtime.JSX.Element;
 
 type InputSize = "sm" | "md" | "lg";
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -72,6 +88,14 @@ declare const Checkbox: react.ForwardRefExoticComponent<Omit<InputHTMLAttributes
     label?: ReactNode;
     description?: ReactNode;
 } & react.RefAttributes<HTMLInputElement>>;
+
+type ProgressTone = "accent" | "success" | "danger" | "neutral";
+type ProgressBarProps = HTMLAttributes<HTMLDivElement> & {
+    value: number;
+    max?: number;
+    tone?: ProgressTone;
+};
+declare function ProgressBar({ className, value, max, tone, ...props }: ProgressBarProps): react_jsx_runtime.JSX.Element;
 
 declare const Dialog: react.FC<DialogPrimitive.DialogProps>;
 declare const DialogTrigger: react.ForwardRefExoticComponent<DialogPrimitive.DialogTriggerProps & react.RefAttributes<HTMLButtonElement>>;
@@ -162,6 +186,77 @@ type EmptyStateProps = HTMLAttributes<HTMLDivElement> & {
 };
 declare function EmptyState({ className, title, description, action, ...props }: EmptyStateProps): react_jsx_runtime.JSX.Element;
 
+type ZoneCardProps = {
+    title: string;
+    subtitle?: string;
+    children: ReactNode;
+    onDragOver: (e: DragEvent<HTMLDivElement>) => void;
+    onDrop: (e: DragEvent<HTMLDivElement>) => void;
+    isActive?: boolean;
+    onTitleDoubleClick?: () => void;
+    className?: string;
+};
+declare function ZoneCard({ title, subtitle, children, onDragOver, onDrop, isActive, onTitleDoubleClick, className }: ZoneCardProps): react_jsx_runtime.JSX.Element;
+
+type CourseChipProps = {
+    id?: string;
+    onDragStart: DragEventHandler<HTMLDivElement>;
+    onDragEnd?: () => void;
+    onDoubleClick?: () => void;
+    name: string;
+    credits: number;
+    grade: string;
+    isMajorRequirement: boolean;
+    isDisabled: boolean;
+    className?: string;
+};
+declare function CourseChip({ id, onDragStart, onDragEnd, onDoubleClick, name, credits, grade, isMajorRequirement, isDisabled, className }: CourseChipProps): react_jsx_runtime.JSX.Element;
+
+type SystemStatusCheck = {
+    name: ReactNode;
+    ok: boolean;
+    detail?: ReactNode;
+};
+type SystemStatusPanelProps = HTMLAttributes<HTMLDivElement> & {
+    title?: ReactNode;
+    statusLabel?: ReactNode;
+    online?: boolean;
+    emptyLabel?: ReactNode;
+    checks?: SystemStatusCheck[];
+};
+declare function SystemStatusPanel({ className, title, statusLabel, online, emptyLabel, checks, ...props }: SystemStatusPanelProps): react_jsx_runtime.JSX.Element;
+
+type TaskCardStatus = "queued" | "running" | "completed" | "failed" | "cancelled" | "idle";
+type TaskCardItem = {
+    id: string;
+    title: ReactNode;
+    meta?: ReactNode;
+    status?: TaskCardStatus;
+    progress?: number;
+    error?: ReactNode;
+    actions?: ReactNode;
+};
+type TaskCardProps = HTMLAttributes<HTMLDivElement> & {
+    title: ReactNode;
+    subtitle?: ReactNode;
+    status?: TaskCardStatus;
+    tags?: ReactNode;
+    meta?: ReactNode;
+    error?: ReactNode;
+    primaryAction?: {
+        label: ReactNode;
+        onClick?: () => void;
+        disabled?: boolean;
+    };
+    secondaryAction?: {
+        label: ReactNode;
+        onClick?: () => void;
+        disabled?: boolean;
+    };
+    items?: TaskCardItem[];
+};
+declare function TaskCard({ className, title, subtitle, status, tags, meta, error, primaryAction, secondaryAction, items, ...props }: TaskCardProps): react_jsx_runtime.JSX.Element;
+
 declare function cn(...inputs: ClassValue[]): string;
 
 declare const colors: {
@@ -204,4 +299,4 @@ declare const motion: {
     readonly slow: "320ms";
 };
 
-export { Badge, type BadgeProps, Button, type ButtonProps, type ButtonSize, type ButtonVariant, Card, CardContent, CardFooter, CardHeader, type CardHeaderProps, type CardProps, Checkbox, type CheckboxProps, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTrigger, EmptyState, Input, type InputProps, PageHeader, type PageHeaderProps, SectionCard, Select, type SelectOption, type SelectProps, StatCard, Textarea, type TextareaProps, type ToastPayload, ToastProvider, type ToastTone, cn, colors, motion, radius, shadows, useToast };
+export { Badge, type BadgeProps, Button, type ButtonProps, type ButtonSize, type ButtonVariant, Card, CardContent, CardFooter, CardHeader, type CardHeaderProps, type CardProps, Checkbox, type CheckboxProps, CourseChip, type CourseChipProps, Dialog, DialogClose, DialogContent, type DialogContentProps, DialogFooter, DialogHeader, DialogOverlay, DialogPortal, DialogTrigger, EmptyState, Input, type InputProps, MetricPill, type MetricPillProps, type MetricPillTone, ModalShell, type ModalShellProps, PageHeader, type PageHeaderProps, ProgressBar, type ProgressBarProps, SectionCard, Select, type SelectOption, type SelectProps, StatCard, type SystemStatusCheck, SystemStatusPanel, type SystemStatusPanelProps, TaskCard, type TaskCardItem, type TaskCardProps, Textarea, type TextareaProps, type ToastPayload, ToastProvider, type ToastTone, ZoneCard, type ZoneCardProps, cn, colors, motion, radius, shadows, useToast };

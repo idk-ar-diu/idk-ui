@@ -29,9 +29,9 @@ type ToastContextValue = {
 const ToastContext = createContext<ToastContextValue | null>(null);
 
 const toneClasses: Record<ToastTone, string> = {
-  success: "border-[var(--success)]/20 bg-white text-[var(--foreground)]",
-  info: "border-[var(--info)]/20 bg-white text-[var(--foreground)]",
-  danger: "border-[var(--danger)]/20 bg-white text-[var(--foreground)]"
+  success: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200",
+  info: "bg-white text-[var(--foreground)] ring-1 ring-[var(--border)]",
+  danger: "bg-red-50 text-red-700 ring-1 ring-red-200"
 };
 
 export function ToastProvider({ children }: PropsWithChildren) {
@@ -54,17 +54,17 @@ export function ToastProvider({ children }: PropsWithChildren) {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div className="pointer-events-none fixed bottom-4 right-4 z-[60] flex w-full max-w-sm flex-col gap-3">
+      <div className="pointer-events-none fixed bottom-4 left-1/2 z-[60] flex w-full max-w-sm -translate-x-1/2 flex-col gap-3 px-4">
         {toasts.map((toast) => (
           <div
             key={toast.id}
             className={cn(
-              "pointer-events-auto rounded-[var(--radius-2xl)] border p-4 shadow-[var(--shadow-card)] idk-ui-animate-slide-up",
+              "pointer-events-auto rounded-[var(--radius-2xl)] px-4 py-2 text-sm font-semibold shadow-lg idk-ui-animate-slide-up",
               toneClasses[toast.tone ?? "info"]
             )}
           >
-            {toast.title ? <div className="text-sm font-semibold">{toast.title}</div> : null}
-            {toast.description ? <div className="mt-1 text-sm text-[var(--muted-foreground)]">{toast.description}</div> : null}
+            {toast.title ? <div>{toast.title}</div> : null}
+            {toast.description ? <div className={cn(toast.title ? "mt-1 text-sm font-normal text-current/80" : "")}>{toast.description}</div> : null}
           </div>
         ))}
       </div>

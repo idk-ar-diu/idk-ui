@@ -11,10 +11,10 @@ export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
 };
 
 const variantClasses: Record<BadgeVariant, string> = {
-  neutral: "bg-[var(--muted)] text-[var(--foreground)]",
-  success: "bg-[var(--success)]/12 text-[var(--success)]",
-  info: "bg-[var(--info)]/12 text-[var(--info)]",
-  danger: "bg-[var(--danger)]/12 text-[var(--danger)]"
+  neutral: "bg-[var(--muted)] text-[var(--foreground)] ring-1 ring-[var(--border)]",
+  success: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200",
+  info: "bg-sky-50 text-sky-700 ring-1 ring-sky-200",
+  danger: "bg-red-50 text-red-700 ring-1 ring-red-200"
 };
 
 const sizeClasses: Record<BadgeSize, string> = {
@@ -26,7 +26,7 @@ export function Badge({ className, variant = "neutral", size = "sm", ...props }:
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full font-semibold leading-none tracking-[-0.01em]",
+        "inline-flex items-center rounded-full font-medium leading-none",
         variantClasses[variant],
         sizeClasses[size],
         className

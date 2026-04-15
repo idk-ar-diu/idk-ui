@@ -1,6 +1,12 @@
 export { Button } from "./components/button/button";
 export type { ButtonProps, ButtonSize, ButtonVariant } from "./components/button/button.types";
 
+export { MetricPill } from "./components/metric-pill/metric-pill";
+export type { MetricPillProps, MetricPillTone } from "./components/metric-pill/metric-pill";
+
+export { ModalShell } from "./components/modal-shell/modal-shell";
+export type { ModalShellProps } from "./components/modal-shell/modal-shell";
+
 export { Input } from "./components/input/input";
 export type { InputProps } from "./components/input/input";
 
@@ -8,10 +14,13 @@ export { Textarea } from "./components/textarea/textarea";
 export type { TextareaProps } from "./components/textarea/textarea";
 
 export { Select } from "./components/select/select";
-export type { SelectOption, SelectProps } from "./components/select/select";
+export type { SelectOption, SelectOptionGroup, SelectProps } from "./components/select/select";
 
 export { Checkbox } from "./components/checkbox/checkbox";
 export type { CheckboxProps } from "./components/checkbox/checkbox";
+
+export { ProgressBar } from "./components/progress-bar/progress-bar";
+export type { ProgressBarProps } from "./components/progress-bar/progress-bar";
 
 export {
   Dialog,
@@ -44,6 +53,14 @@ export type { PageHeaderProps } from "./components/page-header/page-header";
 export { SectionCard } from "./patterns/section-card/section-card";
 export { StatCard } from "./patterns/stat-card/stat-card";
 export { EmptyState } from "./patterns/empty-state/empty-state";
+export { ZoneCard } from "./patterns/zone-card/zone-card";
+export type { ZoneCardProps } from "./patterns/zone-card/zone-card";
+export { CourseChip } from "./patterns/course-chip/course-chip";
+export type { CourseChipProps } from "./patterns/course-chip/course-chip";
+export { SystemStatusPanel } from "./patterns/system-status-panel/system-status-panel";
+export type { SystemStatusCheck, SystemStatusPanelProps } from "./patterns/system-status-panel/system-status-panel";
+export { TaskCard } from "./patterns/task-card/task-card";
+export type { TaskCardItem, TaskCardProps } from "./patterns/task-card/task-card";
 
 export { cn } from "./lib/cn";
 export { Slot } from "./lib/slot";

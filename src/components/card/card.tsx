@@ -22,8 +22,7 @@ export function Card({ className, padding = "md", elevated = false, ...props }: 
   return (
     <div
       className={cn(
-        "rounded-[var(--radius-3xl)] border border-[var(--border)] bg-[var(--card)] text-[var(--card-foreground)]",
-        "rounded-[var(--radius-panel)]",
+        "rounded-[var(--radius-panel)] border border-[var(--border)] bg-[var(--card)] text-[var(--card-foreground)]",
         paddingClasses[padding],
         elevated ? "shadow-[var(--shadow-card)]" : "shadow-none",
         className
